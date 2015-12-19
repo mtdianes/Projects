@@ -1,0 +1,145 @@
+#login{
+  width:35%;
+  margin:0 auto;
+  margin-top:8px;
+  margin-bottom:2%;
+  transition:opacity 1s;
+  -webkit-transition:opacity 1s;
+}
+
+#comment-form{
+  width:35%;
+  margin:0 auto;
+  margin-top:8px;
+  margin-bottom:2%;
+  transition:opacity 1s;
+  -webkit-transition:opacity 1s;
+}
+
+#answer-form{
+  width:35%;
+  margin:0 auto;
+  margin-top:8px;
+  margin-bottom:2%;
+  transition:opacity 1s;
+  -webkit-transition:opacity 1s;
+}
+
+#editCom-form{
+  width:35%;
+  margin:0 auto;
+  margin-top:8px;
+  margin-bottom:2%;
+  transition:opacity 1s;
+  -webkit-transition:opacity 1s;
+}
+
+
+#editAns-form{
+  width:35%;
+  margin:0 auto;
+  margin-top:8px;
+  margin-bottom:2%;
+  transition:opacity 1s;
+  -webkit-transition:opacity 1s;
+}
+
+#triangle{
+  width:0;
+  border-top:12px solid transparent;
+  border-right:12px solid transparent;
+  border-bottom:12px solid #3399cc;
+  border-left:12px solid transparent;
+  margin:0 auto;
+}
+
+#contentPop{
+  width:100%;
+  border-right:1px solid #3399cc;
+  border-left:1px solid #3399cc;
+  border-bottom:1px solid #3399cc;
+  margin:0 auto;
+}
+
+
+#comment-form h1{
+  background:#3399cc;
+  padding:20px 0;
+  font-size:140%;
+  text-align:center;
+  color:#fff;
+}
+
+#login h1{
+  background:#3399cc;
+  padding:20px 0;
+  font-size:140%;
+  text-align:center;
+  color:#fff;
+}
+
+#answer-form h1{
+  background:#3399cc;
+  padding:20px 0;
+  font-size:140%;
+  text-align:center;
+  color:#fff;
+}
+
+#editCom-form h1{
+  background:#3399cc;
+  padding:20px 0;
+  font-size:140%;
+  text-align:center;
+  color:#fff;
+}
+
+#editAns-form h1{
+  background:#3399cc;
+  padding:20px 0;
+  font-size:140%;
+  text-align:center;
+  color:#fff;
+}
+
+form{	
+  background:#FFFFFF;
+  margin-top:-10px;
+  padding:6% 4%;
+}
+
+input[type="text"]{
+  width:92%;
+  background:#fff;
+  margin-bottom:4%;
+  border:1px solid #ccc;
+  padding:4%;
+  color: #2C2C2C;
+}
+
+textarea {
+  width:92%;
+  height: 90px;
+  background:#fff;
+  margin-bottom:4%;
+  border:1px solid #ccc;
+  padding:4%;
+  color:#2C2C2C;
+}
+
+
+input[type="submit"]{
+  width:50%;
+  background:#3399cc;
+  border:0;
+  padding:4%;
+  color:#fff;
+  cursor:pointer;
+  transition:background .3s;
+  -webkit-transition:background .3s;
+}
+
+input[type="submit"]:hover{
+  background:#C83218;
+}
+

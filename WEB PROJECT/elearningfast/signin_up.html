@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+	<html>
+		<head>
+			<title>Login</title>
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+			<link href="css/stylelog.css" rel="stylesheet" type="text/css" media="all"/>
+			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+			<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+			
+    		
+    		<script>
+      			Parse.initialize("dZAfQ7v9o7rkWn8dXFJZUqE2AJCVCtJ4xa9jP9OA", "qMeO2AQc2SHgiyn8DgNBB3oVGn2XSnWuZS1C6jR9");
+  			</script>
+  			
+		</head>
+		<body>
+			<div class="container" style="background-image: url(images/Books.jpg)">
+    			<div class="jumbotron" id="title">
+      				<h1> E-Learning Online </h1>
+      				<p> Learn fast. Learn with perfection!</p>
+      		</div>
+  			</div>
+
+			<div class="login">
+				<h2>Login</h2>
+				<form id="login">
+					<input type="email" class="mail active" id="login_username" placeholder="Email" required/>
+					<input type="password" class="lock active" id="login_password" placeholder="Password" required/>
+					<div class="login-bwn">
+	   					<input type="submit" value="Log in" />
+					</div>						
+				</form>		
+				<div class="forgot">
+ 		  			<div class="login-para">
+ 						<p><a href="#" id="btnForgot"> Forgot Password? </a></p>
+ 					</div>			
+					<div class="clear"> </div>
+				</div>
+				<div id="comment-form" hidden>
+					<div id="triangle"></div>
+					<h1>Change your Password</h1>
+					<div id="contentPop" align="center">
+						<form id="FPass">
+				 			<div id="nose">
+				 				<br />
+								<h5>Post your comment to this class</h5><br />
+								<h4 style="color: black">Email:</h4>
+								<input type="email" id="Femail" required/>
+								<h4 style="color: black">Name:</h4>
+								<input type="text" id="Fname" required/>
+								<h4 style="color: black">New Password:</h4>
+								<input type="password" id="FPassword" required/>
+							</div>
+							<input type="submit" value="Change" align="center" />
+						</form>
+					</div>
+			</div>
+			
+				
+				<div class="login-bottom">
+					<h3>Login</h3>
+					<p>With your social media account</p>
+					<p style="color: red">* Only for Students</p>
+	 				<div class="social-icons">
+						<div class="button" align="center">
+							<button onClick="face()" style="background-color: white; border: 0"><img src="images/facebook-login-button.png"></button>';			 												
+						</div>
+						<h4>Don't have an Account? <a href="#" id="btnSignup"> Register Now!</a></h4>
+						<div class="reg-bwn">
+							<a href="#" id="btnSignup">Sign Up</a>							
+						</div>
+					</div>
+  				</div>
+			</div>
+			<div class="login" id="signview" hidden>			
+  				<h1 id="reg">Sign Up</h1>
+  					<form id="signup">
+  						<hr>
+   						    <div class="accounttype" align="center">
+      							<input type="radio" value="status" id="radioOne" name="account" onclick="checkE()" checked/>
+      							<label for="radioOne" class="radio" >Student</label>
+      							<input type="radio" value="status" id="radioTwo" name="account" onclick="checkT()" />
+      							<label for="radioTwo" class="radio">Teacher</label>
+    						</div>
+  							<input type="email" class="mail active" name="name" id="signup-email" placeholder="Email" required />
+  							<input type="text" class="user active" name="name" id="signup-name" placeholder="Name" required/>
+  							<input type="password" class="lock active" name="name" id="signup-password" placeholder="Password" required/>
+  							<input type="password" class="key active" name="name" id="signup-key" placeholder="Key - Only for teacher" disabled/>
+	  						<div class="reg-bwn" align="center">
+    							<input type="submit" value="Sing Up"/>
+    						</div>    					
+  					</form>
+  					<br>
+  			</div>
+  					
+			
+			<script type="text/javascript">				
+				Parse.initialize("dZAfQ7v9o7rkWn8dXFJZUqE2AJCVCtJ4xa9jP9OA", "qMeO2AQc2SHgiyn8DgNBB3oVGn2XSnWuZS1C6jR9");			
+					
+					function checkE() {
+    					document.getElementById("signup-key").disabled = true;
+					}
+
+					function checkT() {
+    					document.getElementById("signup-key").disabled = false;
+					}
+					
+					$('#btnSignup').click(function() {
+						if ($('#signview').is(':hidden'))
+							$('#signview').show();
+						else
+							$('#signview').hide();
+						});
+						
+					$('#btnForgot').click(function() {
+						if ($('#comment-form').is(':hidden'))
+							$('#comment-form').show();
+						else
+							$('#comment-form').hide();
+						});
+							
+
+					/***** LOG IN *********/    
+      				$("#login").submit(function(event){
+	      			    event.preventDefault();  
+	      			    var login_username = $("#login_username").val();
+	      				var login_password = $("#login_password").val();
+	      				Parse.User.logIn(login_username, login_password, {
+	        							success: function(user){
+	          								alert("Log in Success!");
+	          								document.getElementById('login_username').value = "";
+	          								document.getElementById('login_password').value = "";
+	          								if (user.get("Status")=="Student")
+	          									window.open("Student.html","_self");
+	          								else
+	          									window.open("Teacher.html","_self");
+	        							}, 
+	        							error: function(user, error){
+	          								alert("Error... Sorry, Please try again...");
+	        							}
+	        						}); 
+      				});    			   			
+  			
+      				/***** Sign UP *********/
+      				$("#signup").submit(function(event){
+	        		    event.preventDefault();	
+	        			var signup_email = $("#signup-email").val();
+	      				var signup_name = $("#signup-name").val(); 				
+	      				var signup_password = $("#signup-password").val();      				
+	      				var signup_key = $("#signup-key").val();
+	      				var signup_student= $("#radioOne").val();
+	      				var signup_teacher = $("#radioTwo").val();
+						var user = new Parse.User();
+	      				if (document.getElementById('radioOne').checked){        				
+	        				user.set("username", signup_email);
+		        			user.set("password", signup_password);
+		        			user.set("email", signup_email);
+		        			user.set("Status", "Student");
+		        			user.set("Name",signup_name);
+		        			user.signUp(null, {
+	          					success: function(user){
+	            					alert("Sign up success");
+	            					document.getElementById('signup-email').value = "";
+	          						document.getElementById('signup-name').value = "";
+	          						document.getElementById('signup-password').value = "";
+	          						document.getElementById('signup-key').value = "";
+	          						window.open("Student.html","_self");
+	        					}, 
+	        					error: function(user, error){
+	            					alert("Sorry, This Email is registered... Please, try with another email");
+	            				}	
+	            			});
+	        			} else if(signup_key == "A1b2C3" && document.getElementById('radioTwo').checked) {
+	        				user.set("username", signup_email);
+		        			user.set("password", signup_password);
+		        			user.set("email", signup_email);
+		        			user.set("Status", "Teacher");
+		        			user.set("Name",signup_name);
+		        		    user.signUp(null, {
+	          					success: function(user){
+	            					alert("Sign up success");
+	            					document.getElementById('signup-email').value = "";
+	          						document.getElementById('signup-name').value = "";
+	          						document.getElementById('signup-password').value = "";
+	          						document.getElementById('signup-key').value = "";
+	          						window.open("Teacher.html","_self");
+	        					}, 
+	        					error: function(user, error){
+	            					alert("Sorry, This Email is registered... Please, try with another email");
+	        					}
+	    					});
+		        		} else         				
+		        			alert("Key Incorrect... Please try again");
+    				});
+    		
+    		
+    				/*****Facebook*****/
+    				//$("#face").submit(function(event){    
+    				function face() {	 				
+      					    			  	
+ 				 		window.fbAsyncInit = function() {
+      					Parse.FacebookUtils.init({
+      						appId      : '1694161854134954',                        // App ID from the app dashboard
+      						channelUrl : 'http://localhost:8020/', // Channel file for x-domain comms
+      						status     : false,                                 // Check Facebook Login status
+      						xfbml      : true,                                  // Look for social plugins on the page
+      						logging    : true
+    					});
+    				
+    					Parse.FacebookUtils.logIn(null, {
+							success: function(user) {
+								if (!user.existed()) {
+									alert("User signed up and logged in through Facebook!");
+									FB.api('/me',function(response) {  
+	      								var user = Parse.User.current();
+										user.set("Name",response.name);
+										user.set("Status", "Student");
+										user.save();
+	      								window.open("Student.html","_self"); 
+	 								 });
+								} else {
+									alert("User logged in through Facebook!");
+									window.open("Student.html","_self");
+									}
+								
+    						},
+    						error: function(user, error) {
+        						alert("User cancelled the Facebook login or did not fully authorize.");
+    						}
+  							});
+
+  						};
+
+		  				// Load the SDK asynchronously
+		  				(function(d, s, id){
+		     				var js, fjs = d.getElementsByTagName(s)[0];
+		     				if (d.getElementById(id)) {return;}
+		     				js = d.createElement(s); js.id = id;
+		     				js.src = "//connect.facebook.net/es_LA/all.js";
+		     				fjs.parentNode.insertBefore(js, fjs);
+		   				}(document, 'script', 'facebook-jssdk'));   					
+  					};	
+    		</script>
+		</body>
+		<footer>
+			<br><br>
+		</footer>
+	</html>

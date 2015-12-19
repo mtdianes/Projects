@@ -1,0 +1,108 @@
+
+<html> <head>
+
+<title>INDEX 2</title>
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <!--<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">-->
+			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+			<!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+			<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>-->
+			<!--<script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>-->
+			<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+</head> <body>
+
+
+
+
+<!-- LOGIN -->
+
+<div data-role="page" id="login">
+    <div data-role="content">
+        <!--<input type="button" value="Facebook" class="fb-login-button" id="fblogin" onclick="face()">-->
+        <div id="fb-root"></div>
+        <hr>
+   			<div class="accounttype">
+      			<input type="radio" value="status" id="radioOne" name="account" checked/>
+      			<label for="radioOne" class="radio" >Student</label>
+      			<input type="radio" value="status" id="radioTwo" name="account" />
+      			<label for="radioTwo" class="radio">Teacher</label>
+    		</div>
+    		<!--<form id="face">-->
+    			<label id="icon" for="name"><i class="icon-key"></i></label>
+  		<input type="password" name="name" id="signup-key" placeholder="Key"/>
+        <fb:login-button size="large" scope="public_profile,email" onclick="face();"> 
+											Login with Facebook
+		</fb:login-button>
+		    				<!--			<input type="password" class="key active" id="signup-key" placeholder="Key" required/>
+  								<div>					
+  									<input type="image" src="facebook-login-button.png"/>					 												
+  								</div>
+  								</form>-->
+        <script>
+  			//$("#face").submit(function(event){  
+  				function face(){
+  				Parse.initialize("dZAfQ7v9o7rkWn8dXFJZUqE2AJCVCtJ4xa9jP9OA", "qMeO2AQc2SHgiyn8DgNBB3oVGn2XSnWuZS1C6jR9");
+  				
+  				var signup_key = $("#signup-key").val();
+      			var signup_student= $("#radioOne").val();
+      			var signup_teacher = $("#radioTwo").val();
+      			var ban = true;
+                if(signup_key == "student" && document.getElementById('radioOne').checked){        	
+					status_up = "Student";					
+      			} else if(signup_key == "A1b2C3" && document.getElementById('radioTwo').checked) {
+      				status_up = "Teacher";	
+      			} else {
+      				ban = false;
+      				alert("Key Incorrect... Please try again");      				
+    			}
+    			
+    			if (ban){
+ 				 window.fbAsyncInit = function() {
+      				Parse.FacebookUtils.init({
+      					appId      : '1694161854134954',                        // App ID from the app dashboard
+      					channelUrl : 'http://localhost:8020/', // Channel file for x-domain comms
+      					status     : false,                                 // Check Facebook Login status
+      					xfbml      : true,                                  // Look for social plugins on the page
+      					logging    : true
+    				});
+    				
+    				Parse.FacebookUtils.logIn(null, {
+						success: function(user) {
+							if (!user.existed()) {
+								alert("User signed up and logged in through Facebook!");
+								FB.api('/me',function(response) {  
+      								var user = Parse.User.current();
+									user.set("Name",response.name);
+									user.set("Status", status_up);
+									user.save();
+      								console.log('Successful login for: ' + response.name);
+      								window.open("Student.html"); 
+      								//window.open("Teacher.html");
+ 								 });
+							} else {
+								alert("User logged in through Facebook!");
+								window.open("Student.html");
+								//window.open("Teacher.html"); 
+							}
+    					},
+    					error: function(user, error) {
+        					alert("User cancelled the Facebook login or did not fully authorize.");
+    					}
+  					});
+
+  				};
+
+  				// Load the SDK asynchronously
+  				(function(d, s, id){
+     				var js, fjs = d.getElementsByTagName(s)[0];
+     				if (d.getElementById(id)) {return;}
+     				js = d.createElement(s); js.id = id;
+     				js.src = "//connect.facebook.net/es_LA/all.js";
+     				fjs.parentNode.insertBefore(js, fjs);
+   				}(document, 'script', 'facebook-jssdk'));
+  			}}//);
+		</script>
+    </div>
+</div>
+</body>
+</html>

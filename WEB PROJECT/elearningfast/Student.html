@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Student </title>
+		<!-- Site made with Mobirise Website Builder v1.9.10, http://mobirise.com -->
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="generator" content="Mobirise v1.9.10, mobirise.com">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+
+		<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&amp;subset=cyrillic,latin,greek,vietnamese">-->
+		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+		<!--<link rel="stylesheet" href="assets/animate.css/animate.min.css">-->
+		<!--<link rel="stylesheet" href="assets/socicon/css/socicon.min.css">-->
+		<link rel="stylesheet" href="assets/mobirise/css/style.css">
+		<link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+		<link rel="stylesheet" href="css/style1.css">
+
+		<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+		<!--<script type="text/javascript" src="js/index.js"></script>-->
+
+	</head>
+
+	<body>
+		<!-- HEADER -->
+		<section class="engine">
+			<a rel="nofollow" href="index.html">E-Learning Online - Learning it fast</a>
+		</section>
+		<section class="mbr-navbar mbr-navbar--freeze mbr-navbar--absolute mbr-navbar--sticky mbr-navbar--auto-collapse" id="menu-1">
+			<div class="mbr-navbar__section mbr-section">
+				<div class="mbr-section__container container">
+					<div class="mbr-navbar__container">
+						<div class="mbr-navbar__column mbr-navbar__column--s mbr-navbar__brand">
+							<a class="mbr-navbar__brand-link mbr-brand mbr-brand--inline text-white" href="index.html"> <span class="mbr-brand__name">E-Learning Online</span> </a>
+						</div>
+						<div class="mbr-navbar__hamburger mbr-hamburger text-white">
+							<span class="mbr-hamburger__line"></span>
+						</div>
+						<div class="mbr-navbar__column mbr-navbar__menu">
+							<nav class="mbr-navbar__menu-box mbr-navbar__menu-box--inline-right">
+								<div class="mbr-navbar__column">
+									<ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-decorator mbr-buttons--active">
+										<li class="mbr-navbar__item">
+											<a class="mbr-buttons__link btn text-white" href="index.html">Home</a>
+										</li>
+										<li class="mbr-navbar__item">
+											<a class="mbr-buttons__link btn text-white" href="#msg-box3-6">About</a>
+										</li>
+										<li class="mbr-navbar__item">
+											<a class="mbr-buttons_link btn text-white" href="signin_up.html" id="logout">Log Out</a>
+										</li>
+									</ul>
+								</div>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- BODY -->
+		<section class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--full-height mbr-section--bg-adapted mbr-parallax-background" id="header1-0" style="background-image: url(images/restaurant.png);">
+			<div class="mbr-box__magnet mbr-box__magnet--sm-padding mbr-box__magnet--center-center">
+				<div class="mbr-arrow mbr-arrow--floating text-center">
+					<div class="mbr-section__container container" style="padding-top: 10px">
+						<!--HEADER - WELCOME-->
+						<div style="padding-bottom: 10px; padding-top: 10px;  background-color: white; border-radius:15px 15px 0px 0px" >
+							<h1 id="display_user" style="font-size: 50px"></h1>
+							<h6 id="idUser" hidden></h6>
+							<p>
+								<font color="#2DC2BC">Learn fast. Learn with perfection!</font>
+							</p>
+						</div>
+						<!--BODY -->
+						<!--SHOW THE CLASS REGISTERED -->
+						<div style="padding-bottom: 10px; margin-bottom: 0px; background-color: #E0E0E0">
+							<table width="100%">
+								<tr>
+									<td width="50%">
+									<div align="left" style="padding-left: 55px">
+										<h3><font color="#2DC2BC">Courses</font></h3>
+										<div id="list_ClassReg"></div>
+									</div></td>
+									<td>
+									<div align="center" >
+										<span href="#" class="button" id="toggle-login" alt="Register for a New Class" title="Register for a New Class"><img  src="images/note-edit.png"></span>
+									</div></td>
+								</tr>
+							</table>
+
+							<div id="login" hidden>
+								<div id="triangle"></div>
+								<h1>List of Classes Available</h1>
+								<div id="contentPop">
+									<form id="regClass">
+										<div align="center" style="margin-left: -50px">
+											<ul id="list_class"></ul>
+										</div>
+										<br>
+										<input type="submit" value="Register" />
+									</form>
+								</div>
+							</div>
+						</div>
+						<!--SHOW THE COMMENTS AND REPLY FOR EACH COURSE-->
+						<div style="padding-bottom: 10px; padding-top: 10px;  background-color: white; border-radius:0px 0px 15px 15px" >
+							<h1 id="Comments-Title"></h1>
+							<div id="idClassComm" align="right" hidden>
+								<br>
+							</div>
+							<div>
+								<span href="#" class="button" id="toggle-comment" alt="Comment in this Class" title="Comment in this Class" hidden><img src="images/comment-edit.png"></span>
+								<br>
+								<h1></h1>
+								<div id="comment-form" hidden>
+									<div id="triangle"></div>
+										<h1>New Comment</h1>
+										<div  id="contentPop">
+											<form id="regComment">
+												<div align="center">
+													<h4>Post your comment to this class</h4><br />
+													<h3>Title:</h3><br />
+													<input id="TComment" type="text" required>
+													<h3>Content:</h3><br />
+													<textarea id="CComment"> </textarea>													
+												</div>
+												<br>
+												<input type="submit" value="Register" />
+											</form>
+										</div>
+								</div>
+								<div id="postComments" align="left" style="padding-left: 55px"></div>	
+								<div id="answer-form" hidden>
+									<div id="triangle"></div>
+									<h1>New Reply</h1>
+									<div  id="contentPop">
+										<form id="regAnswer">
+											<div align="center">
+												<h4>Leave a Reply</h4>
+												<h3>Title:</h3><br />
+												<input id="TAnswer" type="text" value="" required>
+												<div id="idClaComm" hidden></div>
+												<h3>Content:</h3><br />
+												<textarea id="CAnswer" > </textarea>
+											</div>
+											<br>
+											<input type="submit" value="Save" />
+										</form>
+									</div>
+								</div>		
+							</div>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FOOTER -->
+		<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="contacts3-3" style="background-color: rgb(60, 60, 60);">
+
+			<div class="mbr-section__container container">
+				<div class="mbr-contacts mbr-contacts--wysiwyg row">
+					<div class="col-sm-8">
+						<div class="row">
+							<div class="col-sm-6">
+								<p class="mbr-contacts__text">
+									<strong>ADDRESS</strong>
+									<br>
+									265 Yorkland Blvd
+									<br>
+									North York, ON M2J 1S5
+									<br>
+									<br>
+									<strong>CONTACTS</strong>
+									<br>
+									Email: support@e-classesonline.com
+									<br>
+									Phone: +1 (647) 426-6798
+									<br>
+								</p>
+							</div>
+							<div class="col-sm-6">
+								<p class="mbr-contacts__text">
+									<strong>LINKS</strong>
+								</p>
+								<ul class="mbr-contacts__list">
+									<li>
+										<a href="#msg-box3-6">About</a>
+									</li>
+									<li>
+										<a href="signin_up.html" id="sign">Sign In / Sign Up</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="mbr-contacts__column col-sm-4">
+						<form action="#" method="post" id="submit_form">
+
+							<div class="form-group">
+								<input type="email" id="contact_email" class="form-control input-sm input-inverse" name="email" placeholder="Email*">
+							</div>
+
+							<div class="form-group">
+								<textarea id="contact_text" class="form-control input-sm input-inverse" name="message" placeholder="Message" rows="4"></textarea>
+							</div>
+							<div class="mbr-buttons mbr-buttons--right btn-inverse">
+								<button type="submit" class="mbr-buttons__btn btn btn-danger" id="contact_btn">
+									CONTACT US
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<script src="assets/jquery/jquery.min.js"></script>
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<script src="assets/jquery-parallax/jquery.parallax.js"></script>
+		<script src="assets/mobirise/js/script.js"></script>
+		<script type="text/javascript">
+			Parse.initialize("dZAfQ7v9o7rkWn8dXFJZUqE2AJCVCtJ4xa9jP9OA", "qMeO2AQc2SHgiyn8DgNBB3oVGn2XSnWuZS1C6jR9");
+			var Comment = Parse.Object.extend("Comment");
+			var Answer = Parse.Object.extend("Answer");
+			var Class = Parse.Object.extend("Class");
+			var idUser;
+			var List_Class_Reg = new Array();
+
+			//SHOW OR HIDE THE POP UP - REGISTER THE NEW CLASS
+			$('#toggle-login').click(function() {
+				if ($('#login').is(':hidden'))
+					$('#login').show();
+				else
+					$('#login').hide();
+			});
+
+			//SHOW OR HIDE THE POP UP - REGISTER THE COMMENT
+			$('#toggle-comment').click(function() {
+				var b = $('#Comments-Title').html();
+				if ($('#comment-form').is(':hidden'))
+					if (b == "")
+						alert("Please, Select a Class");
+					else
+						$('#comment-form').show();
+				else
+					$('#comment-form').hide();
+			});
+			
+			//SHOW OR HIDE THE POP UP - REGISTER THE REPLY
+			function BtnAnswer(clicked_id) {
+				if ($('#answer-form').is(':hidden')) {
+					$('#answer-form').show();
+					$("#idClaComm").html(clicked_id);
+				} else
+					$('#answer-form').hide();
+			}		
+		
+			/******* CHECK USER LOG IN ********/
+			function checkLogIn() {
+				var user = Parse.User.current();
+				user.fetch().then(function(fetchedUser) {
+					var name = fetchedUser.get("Name");
+					if (name) {
+						$("#display_user").html("Welcome " + name);
+					} else {
+						window.open("index2.html", "_self");
+					}
+				}, function(error) {
+					//Handle the error
+				});
+
+				if (Parse.User.current()) {
+					$("#idUser").html("Welcome cc: " + user.id);
+					idUser = user.id;
+				}
+
+			};
+
+			checkLogIn();
+
+			/******* LOG OUT ********/
+			$("#logout").click(function(event) {
+				Parse.User.logOut();
+				alert("You are logout");
+				window.open("main.html", "_self");
+				checkLogIn();
+			});
+
+			/****** GETTING ALL CLASSES AVAILABLE ********/
+			function getClass() {
+				var query = new Parse.Query("Class");
+				query.find({
+					success : function(results) {
+						var output = "";
+						output += '<select id="options" name="class">';
+						for (var i in results) {
+							var title = results[i].get("Name");
+							output += '<option value="' + results[i].id + '"> ' + title + '</option><br>';
+						}
+						output += '</select>';
+						$("#list_class").html(output);
+					},
+					error : function(error) {
+						console.log("Query Error: " + error.message);
+					}
+				});
+			}
+
+			getClass();
+
+			/****** CLASS - REGISTER ********/
+			$("#regClass").submit(function(event) {
+				event.preventDefault();
+				var Register = new Parse.Object.extend("Register");
+
+				var lista = document.getElementById("options");
+				var indiceSeleccionado = lista.selectedIndex;
+				var opcionSeleccionada = lista.options[indiceSeleccionado];
+
+				var textoSeleccionado = opcionSeleccionada.value;
+				var regClass = new Class({id: textoSeleccionado});
+
+				var user = Parse.User.current();
+				var newRegister = new Register();
+				var exis = false;
+
+				for (var j = 0; j < List_Class_Reg.length; j++) {
+					if (List_Class_Reg[j] == regClass.get("Name"))
+						exis = true;
+				}
+
+				$('#login').hide();
+				if (exis)
+					alert('You are registered in this class');
+				else {
+					newRegister.set("idUser", user);
+					newRegister.set("idClass", regClass);
+					newRegister.save();
+					alert('Successful Registration');
+					getClassReg();
+				}
+			});
+
+			/****** GETTING CLASSES - REGISTER ********/
+			function getClassReg() {
+				var query = new Parse.Query("Register");
+				var j = 0;
+				query.include("User");
+				query.include("Class");
+				query.find({
+					success : function(results) {
+						var output1 = "";
+						output1 += '<ul>';
+						for (var i in results) {
+							var idclass = results[i].get("idClass");
+							var user = results[i].get("idUser");
+							var title = idclass.get("Name");
+							var id = idclass.id;
+							if (idUser == user.id) {
+								output1 += '<li style="list-style:none">';
+								output1 += '<div class="btn-decorator"><a class="mbr-buttons__link btn text-black" style="aling:left" href="' + id + '">';
+								output1 += '<span style="font-size: 18px" >' + title + '<span></a></div>';
+								output1 += '</li>';
+								List_Class_Reg[j] = title;
+								j++;
+							}
+						}
+						output1 += '</ul>';
+						$("#list_ClassReg").html(output1);
+						$('#toggle-login').show();
+					},
+					error : function(error) {
+						console.log("Query Error: " + error.message);
+					}
+				});
+			}
+
+			getClassReg();
+
+			/****** GETTING COMMENTS IN EACH COURSE ********/
+			$("#list_ClassReg").on("click", "a", function(event) {
+				event.preventDefault();
+				var id;
+				var ban = true;
+				var output = '<table width="80%">';
+				var titleco = "";
+				var idClic = $(this).attr("href");
+				var query = new Parse.Query("Comment");
+				query.include("user");
+				query.find({
+					success : function(results) {
+						for (var i = 0; i < results.length; i++) {
+							var idC = results[i].get("idClass");
+							var b = true;
+							if (idClic == results[i].get("idClass").id) {
+								ban = false;
+								var titleco = "Comments of " + idC.get("Name");
+								var title = results[i].get("title");
+								var content = results[i].get("content");
+								var clike = results[i].get("Like");
+								var user = results[i].get("user");
+								var name = user.get("Name");
+								var fecha = results[i].get("createdAt");
+								id = results[i].id;
+								idan = "Answer" + id;
+								output += '<tr><td colspan="3"><font style="color: red " size=6">' + title + '</font><i><b><font color="black" size=3>, By: </b>' + name + '</font></i></span></td></tr>';
+								output += '<tr><td colspan="3"><h5>Date: ' + fecha + '</h5><br></td></tr>';
+								output += '<tr><td colspan="3"><label>' + content + '</label></td></tr><tr>';
+								output += '<td><button id="' + id + '" value ="' + clike + '" onClick="BtnAnswer(this.id)" style="background-color: white; border: 0"><img src="images/note_edit.png" alt="Leave a Reply" title="Leave a Reply"></button>';
+								output += '<button id="' + id + '" value ="' + clike + '" onClick="Like(this.id)" style="background-color: white; border: 0"><span id="test' + id + '">' + clike + ' ' + '</span><img src="images/favourites.png" alt="Like" title="Like"></button>';
+								output += '<button id="' + id + '" value ="' + clike + '" onClick="ViewAnswer(this.id)" style="background-color: white; border: 0" ><img src="images/eye.png" alt="View all replies" title="View all replies"></button></td>';
+								output += '<tr><td colspan="3"><div id="' + idan + '" style="padding-left: 35px" hidden></div><br></td></tr><tr><td><h1><br><br></h1></td></tr>';
+							}
+						}
+						output += "</table>";
+						if (ban)
+							$("#Comments-Title").html("There are not comments yet - Pressed on New Comment for you to be the first");
+						else {
+							$("#Comments-Title").html(titleco);
+						}
+						$("#postComments").html(output);
+						$("#idClassComm").html(idClic);
+						$("#toggle-comment").show();
+					},
+					error : function(error) {
+						console.log("Find post query error: " + error.message);
+					}
+				});
+			});
+
+			function ViewAnswer(clicked_id) {
+				event.preventDefault();				
+				if ($('#Answer' + clicked_id).is(':hidden')) {
+					$('#Answer' + clicked_id).show();
+				var outAns = '<table width="80%">';
+				var id;
+				var query = new Parse.Query("Answer");
+				query.include("user");
+				query.find({
+					success : function(results) {
+						for (var i = 0; i < results.length; i++) {
+							if (clicked_id == results[i].get("idComment").id) {
+								var title = results[i].get("title");
+								var content = results[i].get("content");
+								var clike = results[i].get("Like");
+								var user = results[i].get("user");
+								var name = user.get("Name");
+								var fecha = results[i].get("createdAt");
+								id = results[i].id;
+								outAns += '<tr><td><h6><br></h6></td></tr><tr><td><font style="color: #003399 " size=4">' + title + '</font><i><b><font color="black" size=2>, By: </b>' + name + '</font></i></span></td></tr>';
+								outAns += '<tr><td><h6>Date: ' + fecha + '</h6><br></td></tr>';
+								outAns += '<tr><td><label>' + content + '</label></td></tr><tr>';
+								outAns += '<td><button id="' + id + '" value ="' + clike + '" onClick="LikeAns(this.id)" style="background-color: white; border: 0"><span id="testAns' + id + '">' + clike + ' ' + '</span><img src="images/favourites.png" alt="Like" title="Like"></button></td>';
+							}
+						}
+						outAns += "</table>";
+						$("#Answer" + clicked_id).html(outAns);
+					},
+					error : function(error) {
+						console.log("Find post query error: " + error.message);
+					}
+				});
+			} else
+			$('#Answer' + clicked_id).hide();
+			}
+
+			function Like(clicked_id) {
+				event.preventDefault();
+				var comment = new Comment();
+				var clike = document.getElementById(clicked_id).value;
+				clike++;
+				comment.id = clicked_id;
+				comment.set("Like", clike);
+				comment.save(null, {
+					success : function(comment) {
+						getClassReg();
+						$("#test" + clicked_id).html(clike);
+					},
+				});
+			}
+			
+			function LikeAns(clicked_id) {
+				event.preventDefault();
+				var answer = new Answer();
+				var clike = document.getElementById(clicked_id).value;
+				clike++;
+				answer.id = clicked_id;
+				answer.set("Like", clike);
+				answer.save(null, {
+					success : function(answer) {
+						getClassReg();
+						$("#testAns" + clicked_id).html(clike);
+					},
+				});
+			}
+
+			$("#regComment").submit(function(event) {
+				event.preventDefault();
+				// Prevent refreshing after submitting
+				var idCComm = $("#idClassComm").html();
+				var tComment = $("#TComment").val();
+				var cComment = $("#CComment").val();
+				var ClassComment = new Class({
+					id : idCComm
+				});
+				var user = Parse.User.current();
+
+				// Builds the comment object
+				var comment = new Comment();
+				comment.set("user", user);
+				comment.set("Like", 0);
+				comment.set("title", tComment);
+				comment.set("content", cComment);
+				comment.set("idClass", ClassComment);
+				comment.save({
+					success : function(object) {
+						$('#comment-form').hide();
+						alert('You are registered in this class');
+						console.log("Comment saved: " + tComment);
+					},
+					error : function(obj, error) {// When saving, error function gets the obj you are trying to save and error
+						console.log("Comment save error: " + error.message);
+					}
+				});
+			});
+
+
+			$("#regAnswer").submit(function(event) {
+				event.preventDefault();
+				// Prevent refreshing after submitting
+				var clicked_id = $("#idClaComm").html();
+				var tAnswer = $("#TAnswer").val();
+				var cAnswer = $("#CAnswer").val();
+				var comment = new Comment({
+					id : clicked_id
+				});
+				var user = Parse.User.current();
+				// Builds the comment object
+				var answer = new Answer();
+				answer.set("user", user);
+				answer.set("Like", 0);
+				answer.set("title", tAnswer);
+				answer.set("content", cAnswer);
+				answer.set("idComment", comment);
+				answer.save({
+					success : function(object) {
+						$('#answer-form').hide();
+						alert('You are registered a comment');
+						console.log("Comment saved: " + tAnswer);
+					},
+					error : function(obj, error) {// When saving, error function gets the obj you are trying to save and error
+						console.log("Comment save error: " + error.message);
+					}
+				});
+			});
+
+
+			var Contact = Parse.Object.extend("Contact");
+
+			$("#submit_form").submit(function(event) {
+				event.preventDefault();
+				var contact_email = $("#contact_email").val();
+				var contact_text = $("#contact_text").val();
+
+				var newMessage = new Contact();
+				newMessage.set("email", contact_email);
+				newMessage.set("text", contact_text);
+
+				newMessage.save({
+					success : function() {
+						alert("Thanks for contact us.");
+						//contact_email = "";
+						//contact_text = "";
+						document.getElementById('contact_email').value = "";
+						document.getElementById('contact_text').value = "";
+
+					},
+					error : function(error) {
+						console.log("Error: " + error.message);
+					}
+				});
+			});
+
+			$('#sign').click(function() {
+				window.close("index.html");
+			});
+		</script>
+
+	</body>
+</html>
