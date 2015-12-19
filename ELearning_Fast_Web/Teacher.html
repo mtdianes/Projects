@@ -1,0 +1,728 @@
+<!DOCTYPE HTML>
+	<html>
+		<head>
+			<title>Teacher</title>
+			<link href="css/stylelog.css" rel="stylesheet" type="text/css" media="all"/>
+			<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+			<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  			<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    		
+    		<script>
+      			Parse.initialize("9cTEPhALPtIZG62RxjiQYFZfE9hp0EQZ2C8bALlP", "jX08MUAq0MZsXREYEdzdCvI0IF2xhogu05mrFE2J");
+  			</script>
+  			
+  			<style>
+  				*{margin:0;padding:0}
+				h1{text-align:center;height:50px;line-height:50px;}
+				header nav{height:40px;background:#000;width:100%;}
+				header nav ul{display:table;margin:0 auto}
+				header nav ul li{list-style:none;float:left}
+				header nav ul li a:link,header nav ul li a:active,header nav ul li a:visited{line-height:40px;color:#fff;text-decoration:none;padding:0 20px;display:block}
+		
+				.fixed{box-shadow:0 0 10px rgba(0,0,0,0.5);position:fixed;top:0}
+		
+				.contenedor{width:50%;margin:20px auto}
+  			</style>
+  			
+		</head>
+		
+		<body>
+			<header>
+				<div style="background-image: url(images/librarylogo3000x2154-165.jpg); color: white; height: 150px; vertical-align: center">
+		      				<br><h1 style="text-shadow: black 0.1em 0.1em 0.2em"> E-Learning Online </h1>
+		      				<p align="center" style="color:black; text-shadow: white 0.1em 0.1em 0.2em"> Learn fast. Learn with perfection!</p>
+		      	</div>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="index.html" id="logout">Log Out</a></li>
+					</ul>
+				</nav>
+			</header>
+			
+			
+			<section style="padding-bottom: 20px">
+    			<div class="container" >
+					<!--HEADER - WELCOME-->
+					<div style="padding-bottom: 10px; padding-top: 10px; margin-top:20px; background-color: white; border-radius:15px 15px 0px 0px" >
+						<h1 id="display_user" style="color:black; font-size: 50px"></h1>
+						<h6 id="idUser" hidden></h6>
+						<p align="center" style="color: #2DC2BC"><strong>Learn fast. Learn with perfection!</strong> </p>
+					</div>
+					<!--BODY -->		
+					<!--SHOW THE CLASS REGISTERED -->
+					<div style="padding-bottom: 10px; background-color: #DDD8D8">
+						<table width="100%">
+							<tr>
+								<td width="50%">
+									<h3 style="color: #2DC2BC;margin-left: 0px;padding-left: 60px;width: 50px;">Courses</h3>
+									<div align="left" style="padding-left: 80px">								
+										<div id="list_ClassReg"></div>
+									</div>
+								</td>
+								<td>
+									<div align="center" >
+										<span href="#" class="button" id="toggle-login" data-toggle="modal" data-target="#myModalRegNewClass" alt="Register for a New Class" title="Register for a New Class"><img  src="images/note_add.png"></span>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+					
+					<!-- Modal -->
+						<div id="myModalRegNewClass" class="modal fade" role="dialog">
+		  					<div class="modal-dialog">
+					   			<!-- Modal content-->
+					    		<div class="modal-content">
+					      			<div class="modal-header" align="center" style="background-color: #2DC2BC">
+					        			<button type="button" class="close" data-dismiss="modal">&times;</button>
+					        			<h4 class="modal-title" style="color: white">List of Classes Available</h4>
+					      			</div>
+					     			<div class="modal-body" align="center">
+										<form id="regNewClass">
+											<input type="text" id="nameClass" placeholder="Name of the New Class"/>
+										<br>
+										<div class="login"><input type="submit" value="Create" /></div>
+									</form>
+									</div>
+					   			</div>
+						  	</div>
+						</div>
+				
+				<!--SHOW THE COMMENTS AND REPLY FOR EACH COURSE-->
+				<div style="padding-bottom: 10px; padding-top: 10px;  background-color: white; border-radius:0px 0px 15px 15px">
+					<h1 style="color: black" id="Comments-Title"></h1>
+					<div align="center"><img src="images/comment-edit.png" href="#" class="button" id="toggle-comment" data-toggle="modal" data-target="#myModalNewComment" alt="Comment in this Class" title="Comment in this Class" hidden></div>
+					<div id="idClassComm" align="right" hidden>	<br> </div>
+					
+					<!-- Modal -->
+					<div id="myModalNewComment" class="modal fade" role="dialog">
+	  					<div class="modal-dialog">
+				   			<!-- Modal content-->
+				    		<div class="modal-content">
+				      			<div class="modal-header" align="center" style="background-color: #2DC2BC">
+				        			<button type="button" class="close" data-dismiss="modal">&times;</button>
+				        			<h4 class="modal-title" style="color: white">New Comment</h4>
+				      			</div>
+				     			<div class="modal-body" align="center">
+									<form id="regComment">
+										<h4 align="center">Leave your comment for this class</h4>
+										<input id="TComment" type="text" placeholder="Title" style="width: 80%" required>
+										<p><br /></p>
+										<textarea id="CComment" placeholder=" Comment" style="width: 80%; height: 90px;"></textarea>													
+										<br>
+										<div class="login"><input type="submit" value="Register"/></div>
+									</form>
+								</div>
+				   			</div>
+					  	</div>
+					</div>
+	
+					<div id="postComments" align="left" style="padding-left: 55px"></div>	
+	
+					<!-- Modal -->
+					<!--<div class="login">-->
+						<div id="myModalNewReply" class="modal fade" role="dialog">
+		  					<div class="modal-dialog">
+					   			<!-- Modal content-->
+					    		<div class="modal-content">
+					      			<div class="modal-header" align="center" style="background-color: #2DC2BC">
+					        			<button type="button" class="close" data-dismiss="modal">&times;</button>
+					        			<h4 class="modal-title" style="color: white">New Reply</h4>
+					      			</div>
+					     			<div class="modal-body" align="center">
+										<form id="regAnswer">
+											<h4>Leave your Reply for this class</h4>
+											<input id="TAnswer" type="text" placeholder="Title" value="" style="width: 80%"  required>
+											<div id="idClaComm" hidden></div>
+											<p><br /></p>
+											<textarea id="CAnswer" placeholder=" Comment" style="width: 80%; height: 90px;"></textarea>
+											<br>
+											<div class="login"><input type="submit" value="Reply" /></div>
+										</form>
+									</div>
+					   			</div>
+						  	</div>
+						</div>
+					<!--</div>-->
+					
+					
+					<div id="myModalEditComment" class="modal fade" role="dialog">
+		  					<div class="modal-dialog">
+					   			<!-- Modal content-->
+					    		<div class="modal-content">
+					      			<div class="modal-header" align="center" style="background-color: #2DC2BC">
+					        			<button type="button" class="close" data-dismiss="modal">&times;</button>
+					        			<h4 class="modal-title" style="color: white">Editing the comment</h4>
+					      			</div>
+					     			<div class="modal-body" align="center">
+										<form id="regEditComment">
+											<input id="TEdiComment" type="text" value="" style="width: 80%" required>
+											<p>
+												<br />
+											</p>
+											<textarea id="CEdiComment" style="width: 80%; height: 90px;"></textarea>
+											<div id="idCom" hidden></div>
+											<br>
+											<div class="login"><input type="submit" value="Register" /></div>
+										</form>
+									</div>
+								</div>
+							</div>
+					</div>
+					
+					
+					<div id="myModalEditReply" class="modal fade" role="dialog">
+		  					<div class="modal-dialog">
+					   			<!-- Modal content-->
+					    		<div class="modal-content">
+					      			<div class="modal-header" align="center" style="background-color: #2DC2BC">
+					        			<button type="button" class="close" data-dismiss="modal">&times;</button>
+					        			<h4 class="modal-title" style="color: white">Editing the reply</h4>
+					      			</div>
+					     			<div class="modal-body" align="center">
+										<form id="regEditAnswer">
+											<input id="TEdiAnswer" type="text" value="" style="width: 80%" required>
+											<p><br /></p>
+											<textarea id="CEdiAnswer" style="width: 80%; height: 90px;"></textarea>
+											<div id="idAns" hidden></div>
+											<br>
+											<div class="login"><input type="submit" value="Register" /></div>
+										</form>
+									</div>
+								</div>
+							</div>	
+					</div>
+				</div>
+			</section>
+			
+		
+			
+			<script type="text/javascript">
+			Parse.initialize("9cTEPhALPtIZG62RxjiQYFZfE9hp0EQZ2C8bALlP", "jX08MUAq0MZsXREYEdzdCvI0IF2xhogu05mrFE2J");
+			var Comment = Parse.Object.extend("Comment");
+			var Answer = Parse.Object.extend("Answer");
+			var Class = Parse.Object.extend("Class");
+			var idUser;
+			var List_Class_Reg = new Array();
+
+			//SHOW OR HIDE THE POP UP - REGISTER THE NEW CLASS
+			$('#toggle-login').click(function() {
+				if ($('#login').is(':hidden'))
+					$('#login').show();
+				else
+					$('#login').hide();
+			});
+
+			//SHOW OR HIDE THE POP UP - REGISTER THE COMMENT
+			$('#toggle-comment').click(function() {
+				var b = $('#Comments-Title').html();
+				if ($('#comment-form').is(':hidden'))
+					if (b == "")
+						alert("Please, Select a Class");
+					else
+						$('#comment-form').show();
+				else
+					$('#comment-form').hide();
+			});
+			
+			//SHOW OR HIDE THE POP UP - REGISTER THE REPLY
+			function BtnAnswer(clicked_id) {
+				if ($('#answer-form').is(':hidden')) {
+					$('#answer-form').show();
+					$("#idClaComm").html(clicked_id);
+				} else
+					$('#answer-form').hide();
+			}		
+		
+			/******* CHECK USER LOG IN ********/
+			function checkLogIn() {
+				var user = Parse.User.current();
+				user.fetch().then(function(fetchedUser) {
+					var name = fetchedUser.get("Name");
+					if (name) {
+						$("#display_user").html("Welcome " + name);
+					} else {
+						window.open("index2.html", "_self");
+					}
+				}, function(error) {
+					//Handle the error
+				});
+
+				if (Parse.User.current()) {
+					$("#idUser").html("Welcome cc: " + user.id);
+					idUser = user.id;
+				}
+
+			};
+
+			checkLogIn();
+
+			/******* LOG OUT ********/
+			$("#logout").click(function(event) {
+				Parse.User.logOut();
+				alert("You are logout");
+				window.open("main.html", "_self");
+				checkLogIn();
+			});
+
+			/****** GETTING ALL CLASSES AVAILABLE ********/
+			function getClass() {
+				var query = new Parse.Query("Class");
+				query.find({
+					success : function(results) {
+						var output = "";
+						output += '<select id="options" name="class">';
+						for (var i in results) {
+							var title = results[i].get("Name");
+							List_Class_Reg[i] = title;
+							output += '<option value="' + results[i].get("objectId") + '"> ' + title + '</option><br>';
+						}
+						output += '</select>';
+						$("#list_class").html(output);
+					},
+					error : function(error) {
+						console.log("Query Error: " + error.message);
+					}
+				});
+			}
+
+			getClass();
+
+			/****** CLASS - REGISTER ********/
+			$("#regNewClass").submit(function(event) {
+				event.preventDefault();
+				var classes = new Parse.Object.extend("Class");
+				var name =  $("#nameClass").val();
+				var user = Parse.User.current();
+				var newRegister = new classes();
+				var idClass;
+				
+  				var exis = false;
+
+				for (var j = 0; j < List_Class_Reg.length; j++) {
+					if (List_Class_Reg[j] == name)
+						exis = true;
+				}
+				
+				$('#login').hide();
+				if (exis)
+					alert('Sorry, there is a class with that name');
+				else {
+					newRegister.set("idUser", user);
+					newRegister.set("Name", name);
+					newRegister.save(null, {
+						success : function(newClass) {		
+							alert('Successful Registration');
+							regClassT(newClass.id);
+						}
+					});
+					
+				}				
+			});
+			
+			function regClassT(idClass){
+				var user = Parse.User.current();
+				var Register = new Parse.Object.extend("Register");
+				var newRegistro = new Register();
+				var regClass = new Class({id : idClass});
+								
+				newRegistro.set("idUser", user);
+				newRegistro.set("idClass", regClass);
+				newRegistro.save();
+			}
+
+			/****** GETTING CLASSES - REGISTER ********/
+			function getClassReg() {
+				var query = new Parse.Query("Register");
+				var title,
+				    j = 0;
+				query.include("User");
+				query.include("Class");
+				query.find({
+					success : function(results) {
+						var output1 = "";
+						output1 += '<ul>';
+						for (var i in results) {
+							var idclass = results[i].get("idClass");
+							var user = results[i].get("idUser");
+							title = idclass.get("Name");
+							var id = idclass.get("objectId");
+							if (idUser == user.id) {
+								output1 += '<li style="list-style:none">';
+								output1 += '<div class="btn-decorator"><a class="mbr-buttons__link btn text-black" style="aling:left" href="' + results[i].get("idClass").id + '">';
+								output1 += '<span style="font-size: 18px" >' + title + '<span></a></div>';
+								output1 += '</li>';
+								List_Class_Reg[j] = title;
+								j++;
+							}
+						}
+						output1 += '</ul>';
+						$("#list_ClassReg").html(output1);
+						$('#toggle-login').show();
+					},
+					error : function(error) {
+						console.log("Query Error: " + error.message);
+					}
+				});
+			}
+
+			getClassReg();
+
+			/****** GETTING COMMENTS IN EACH COURSE ********/
+			$("#list_ClassReg").on("click", "a", function(event) {
+				event.preventDefault();
+				var id;
+				var ban = true;
+				var output = '<table width="80%">';
+				var titleco = "";
+				var idClic = $(this).attr("href");
+				var query = new Parse.Query("Comment");
+				query.include("user");
+				query.find({
+					success : function(results) {
+						for (var i = 0; i < results.length; i++) {
+							var idC = results[i].get("idClass");
+							var b = true;
+							if (idClic == results[i].get("idClass").id) {
+								ban = false;
+								var titleco = "Comments of " + idC.get("Name");
+								var title = results[i].get("title");
+								var content = results[i].get("content");
+								var clike = results[i].get("Like");
+								var user = results[i].get("user");
+								var name = user.get("Name");
+								var fecha = results[i].get("createdAt");
+								id = results[i].id;
+								idan = "Answer" + id;
+								output += '<tr><td colspan="5"><font style="color: red " size=6">' + title + '</font><i><b><font color="black" size=3>, By: </b>' + name + '</font></i></span></td></tr>';
+								output += '<tr><td colspan="5"><h5>Date: ' + fecha + '</h5><br></td></tr>';
+								output += '<tr><td colspan="5"><label>' + content + '</label></td></tr><tr>';
+								output += '<td><button id="' + id + '" value ="' + clike + '" onClick="BtnAnswer(this.id)" data-toggle="modal" data-target="#myModalNewComment" style="background-color: white; border: 0"><img src="images/note_edit.png" alt="Leave a Reply" title="Leave a Reply"></button>';
+								output += '<button id="' + id + '" value ="' + clike + '" onClick="Like(this.id)" style="background-color: white; border: 0"><span id="test' + id + '">' + clike + ' ' + '</span><img src="images/favourites.png" alt="Like" title="Like"></button>';
+								output += '<button id="' + id + '" value ="' + clike + '" onClick="ViewAnswer(this.id)" style="background-color: white; border: 0" ><img src="images/eye.png" alt="View all replies" title="View all replies"></button>';
+								output += '<button id="' + id + '" onClick="DeleteComment(this.id)" style="background-color: white; border: 0"><img src="images/delete-big.png" alt="Delete comment" title="Delete comment"></button>';
+								output += '<button id="' + id + '" onClick="EditComment(this.id)" data-toggle="modal" data-target="#myModalEditComment" style="background-color: white; border: 0" ><img src="images/comment-edit-icon.png" alt="Edit comment" title="Edit comment"></button></td></tr><tr><td><h1></h1></td></tr>';
+								output += '<tr><td colspan="5"><div id="' + idan + '" style="padding-left: 35px" hidden></div><br></td></tr><tr><td><h1><br></h1></td></tr>';
+							}
+						}
+						output += "</table>";
+						if (ban)
+							$("#Comments-Title").html("There are not comments yet - Pressed on New Comment for you to be the first");
+						else {
+							$("#Comments-Title").html(titleco);
+						}
+						$("#postComments").html(output);
+						$("#idClassComm").html(idClic);
+						$("#toggle-comment").show();
+					},
+					error : function(error) {
+						console.log("Find post query error: " + error.message);
+					}
+				});
+			});
+
+
+
+			function ViewAnswer(clicked_id) {
+				event.preventDefault();				
+				if ($('#Answer' + clicked_id).is(':hidden')) {
+					$('#Answer' + clicked_id).show();
+				var outAns = '<table width="80%">';
+				var id;
+				var query = new Parse.Query("Answer");
+				query.include("user");
+				query.find({
+					success : function(results) {
+						for (var i = 0; i < results.length; i++) {
+							if (clicked_id == results[i].get("idComment").id) {
+								var title = results[i].get("title");
+								var content = results[i].get("content");
+								var clike = results[i].get("Like");
+								var user = results[i].get("user");
+								var name = user.get("Name");
+								var fecha = results[i].get("createdAt");
+								id = results[i].id;
+								outAns += '<tr><td colspan="3"><font style="color: #003399 " size=4">' + title + '</font><i><b><font color="black" size=2>, By: </b>' + name + '</font></i></span></td></tr>';
+								outAns += '<tr><td colspan="3"><h6>Date: ' + fecha + '</h6><br></td></tr>';
+								outAns += '<tr><td colspan="3"><label>' + content + '</label></td></tr><tr>';
+								outAns += '<td><button id="' + id + '" value ="' + clike + '" onClick="LikeAns(this.id)" style="background-color: white; border: 0"><span id="testAns' + id + '">' + clike + ' ' + '</span><img src="images/favourites.png" alt="Like" title="Like"></button>';
+								outAns += '<button id="' + id + '" onClick="Delete(this.id)" style="background-color: white; border: 0"><img src="images/delete-big.png" alt="Delete reply" title="Delete reply"></button>';
+								outAns += '<button id="' + id + '" onClick="EditAns(this.id)" data-toggle="modal" data-target="#myModalEditReply" style="background-color: white; border: 0"><img src="images/comment-edit-icon.png" alt="Edit reply" title="Edit reply"></button></td></tr>';
+								outAns += '<tr><td><h3><br></h3></tr></td>'
+							}
+						}
+						outAns += "</table>";
+						$("#Answer" + clicked_id).html(outAns);
+					},
+					error : function(error) {
+						console.log("Find post query error: " + error.message);
+					}
+				});
+			} else
+			$('#Answer' + clicked_id).hide();
+			}
+
+			function Like(clicked_id) {
+				event.preventDefault();
+				var comment = new Comment();
+				var clike = document.getElementById(clicked_id).value;
+				clike++;
+				comment.id = clicked_id;
+				comment.set("Like", clike);
+				comment.save(null, {
+					success : function(comment) {
+						getClassReg();
+						$("#test" + clicked_id).html(clike);
+					},
+				});
+			}
+			
+			function LikeAns(clicked_id) {
+				event.preventDefault();
+				var answer = new Answer();
+				var clike = document.getElementById(clicked_id).value;
+				clike++;
+				answer.id = clicked_id;
+				answer.set("Like", clike);
+				answer.save(null, {
+					success : function(answer) {
+						getClassReg();
+						$("#testAns" + clicked_id).html(clike);
+					},
+				});
+			}
+
+			$("#regComment").submit(function(event) {
+				event.preventDefault();
+				// Prevent refreshing after submitting
+				var idCComm = $("#idClassComm").html();
+				var tComment = $("#TComment").val();
+				var cComment = $("#CComment").val();
+				var ClassComment = new Class({
+					id : idCComm
+				});
+				var user = Parse.User.current();
+
+				// Builds the comment object
+				var comment = new Comment();
+				comment.set("user", user);
+				comment.set("Like", 0);
+				comment.set("title", tComment);
+				comment.set("content", cComment);
+				comment.set("idClass", ClassComment);
+				comment.save({
+					success : function(object) {
+						$('#comment-form').hide();
+						alert('You are registered in this class');
+						console.log("Comment saved: " + tComment);
+					},
+					error : function(obj, error) {// When saving, error function gets the obj you are trying to save and error
+						console.log("Comment save error: " + error.message);
+					}
+				});
+			});
+
+
+
+
+			$("#regAnswer").submit(function(event) {
+				event.preventDefault();
+				// Prevent refreshing after submitting
+				var clicked_id = $("#idClaComm").html();
+				var tAnswer = $("#TAnswer").val();
+				var cAnswer = $("#CAnswer").val();
+				var comment = new Comment({
+					id : clicked_id
+				});
+				var user = Parse.User.current();
+				// Builds the comment object
+				var answer = new Answer();
+				answer.set("user", user);
+				answer.set("Like", 0);
+				answer.set("title", tAnswer);
+				answer.set("content", cAnswer);
+				answer.set("idComment", comment);
+				answer.save({
+					success : function(object) {
+						$('#answer-form').hide();
+						alert('You are registered a comment');
+						console.log("Comment saved: " + tAnswer);
+					},
+					error : function(obj, error) {// When saving, error function gets the obj you are trying to save and error
+						console.log("Comment save error: " + error.message);
+					}
+				});
+			});
+
+			function Delete(clicked_id) {
+				var query = new Parse.Query(Answer);
+				query.get(clicked_id, {
+					success : function(myObj) {
+						alert('You are delete a comment');
+						myObj.destroy({});
+					},
+					error : function(object, error) {
+						console.log("Comment save error: " + error.message);
+					}
+				});
+			}
+
+			function DeleteComment(clicked_id) {
+
+				
+				var queryAns = new Parse.Query(Answer);
+				queryAns.include("Comment");
+				queryAns.find({
+					success : function(results) {
+						for (var i = 0; i < results.length; i++) {
+							var ver = results[i].get("idComment").id;
+							if (clicked_id == results[i].get("idComment")) {
+								Delete(results[i].id);
+							}
+						}
+					}
+				});
+				
+				var query = new Parse.Query(Comment);
+				query.get(clicked_id, {
+					success : function(myObj) {
+						alert('You are delete a comment');
+						myObj.destroy({});
+					},
+					error : function(object, error) {
+						console.log("Comment save error: " + error.message);
+					}
+				});
+				
+
+			};
+
+			function EditAns(clicked_id) {
+				event.preventDefault();
+				if ($('#editAns-form').is(':hidden')) {
+					$('#editAns-form').show();
+					$("#idAns").html(clicked_id);				
+					var query = new Parse.Query("Answer");
+					query.find({
+						success : function(results) {
+							for (var i = 0; i < results.length; i++) {
+								if (clicked_id == results[i].id) {
+									var title = results[i].get("title");
+									var content = results[i].get("content");
+									document.getElementById("TEdiAnswer").value = title;
+									document.getElementById("CEdiAnswer").value = content;
+									$("#idAns").html(clicked_id);
+								}
+							}
+						},
+						error : function(object, error) {
+							console.log("Comment save error: " + error.message);
+						}
+					});
+				} else
+					$('#editAns-form').hide();
+			}
+
+
+			$("#regEditAnswer").submit(function(event) {
+				event.preventDefault();
+				// Prevent refreshing after submitting
+				idAnsw = $("#idAns").html();
+				var tAnswer = $("#TEdiAnswer").val();
+				var cAnswer = $("#CEdiAnswer").val();
+				var query = new Parse.Query(Answer);
+				query.equalTo("objectId", idAnsw);
+				query.first({
+					success : function(Answer) {
+						Answer.save(null, {
+							success : function(answer) {
+								answer.set("title", tAnswer);
+								answer.set("content", cAnswer);
+								answer.save();
+								$('#editAns-form').hide();
+								alert('You are update');
+								console.log("Comment saved: " + tAnswer);
+							}
+						});
+					},
+					error : function(obj, error) {
+						console.log("Comment save error: " + error.message);
+					}
+				});
+			});
+
+			function EditComment(clicked_id) {
+				event.preventDefault();
+				if ($('#editCom-form').is(':hidden')) {
+					$('#editCom-form').show();
+					$("#idCom").html(clicked_id);
+					var query = new Parse.Query("Comment");
+					query.find({
+						success : function(results) {
+							for (var i = 0; i < results.length; i++) {
+								if (clicked_id == results[i].id) {
+									var title = results[i].get("title");
+									var content = results[i].get("content");
+									document.getElementById("TEdiComment").value = title;
+									document.getElementById("CEdiComment").value = content;
+									$("#idCom").html(clicked_id);
+								}
+							}
+						},
+						error : function(object, error) {
+							console.log("Comment save error: " + error.message);
+						}
+					});
+				} else
+					$('#editCom-form').hide();
+			}
+
+
+			$("#regEditComment").submit(function(event) {
+				event.preventDefault();
+				// Prevent refreshing after submitting
+				idComm = $("#idCom").html();
+				var tComment = $("#TEdiComment").val();
+				var cComment = $("#CEdiComment").val();
+				var query = new Parse.Query(Comment);
+				query.equalTo("objectId", idComm);
+				query.first({
+					success : function(Comment) {
+						Comment.save(null, {
+							success : function(comment) {
+								comment.set("title", tComment);
+								comment.set("content", cComment);
+								comment.save();
+								$('#editCom-form').hide();
+								alert('You are update');
+								console.log("Comment saved: " + tComment);
+							}
+						});
+					}
+				});
+			});
+
+			</script>
+    		
+    		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>	
+		
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$(window).scroll(function(){
+						if ($(this).scrollTop() > 50) 
+							$('nav').addClass("fixed").fadeIn();
+						else 
+							$('nav').removeClass("fixed");
+					});
+				});
+			</script>
+
+				
+		</body>
+		<footer >
+			<p align="center" style="color:black; text-shadow: white 0.1em 0.1em 0.2em"> Copyright @ Thomas, Raj, Maria T y Leandro</p>
+		</footer>
+	</html>
